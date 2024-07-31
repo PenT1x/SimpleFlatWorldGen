@@ -1,6 +1,5 @@
 package com.pent1x.simpleflatworldgen;
 
-import com.pent1x.simpleflatworldgen.SimpleFlatWorldGen;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -12,6 +11,7 @@ import java.util.Random;
 
 public class Chunk extends ChunkGenerator {
     int height;
+    boolean setBedrockBlock;
 
     List<String> layers;
 
@@ -19,6 +19,7 @@ public class Chunk extends ChunkGenerator {
         // Get config
         FileConfiguration config = SimpleFlatWorldGen.getInstance().getConfig();
         height = config.getInt("height");
+        setBedrockBlock = config.getBoolean("set_bedrock_spawn_block");
 
         layers = config.getStringList(worldName);
 
@@ -29,7 +30,10 @@ public class Chunk extends ChunkGenerator {
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
         ChunkData chunkData = createChunkData(world);
 
-        if (layers.get(0).toLowerCase().equals("void")) return chunkData;
+        if (layers.get(0).toLowerCase().equals("void")) {
+            setBedrockBlock(chunkX, chunkZ, chunkData);
+            return chunkData;
+        }
 
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
@@ -41,6 +45,18 @@ public class Chunk extends ChunkGenerator {
             }
         }
 
+        if (setBedrockBlock) setBedrockBlock(chunkX, chunkZ, chunkData);
+
         return chunkData;
+    }
+
+    public void setBedrockBlock(int chunkX, int chunkZ, ChunkData chunkData) {
+        final int x = 0, y = 64, z = 0;
+
+        if ((x >= chunkX * 16) && (x < (chunkX + 1) * 16)) {
+            if ((z >= chunkZ * 16) && (z < (chunkZ + 1) * 16)) {
+                chunkData.setBlock(x, y, z, Material.BEDROCK);
+            }
+        }
     }
 }
