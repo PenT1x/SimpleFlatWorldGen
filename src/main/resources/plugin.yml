@@ -1,0 +1,4 @@
+name: SimpleFlatWorldGen
+version: '${version}'
+main: com.pent1x.simpleflatworldgen.SimpleFlatWorldGen
+load: STARTUP

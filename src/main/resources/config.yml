@@ -1,0 +1,29 @@
+# At what y-level should the first block be placed at
+height: 32
+
+# Default layer if world settings can't be found.
+default:
+  - Bedrock
+
+world:
+  - Grass
+  - Dirt
+  - Dirt
+  - Bedrock
+
+world_nether:
+  - Netherrack
+  - Netherrack
+  - Bedrock
+
+world_the_end:
+  - Ender_stone
+  - Bedrock
+
+# Make a void world like this
+void:
+  - void
+
+# name_of_your_world:
+# - Block1
+# - Block2
