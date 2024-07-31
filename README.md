@@ -19,6 +19,9 @@ worlds:
 # At what y-level should the first block be placed at
 height: 32
 
+# Set a bedrock block at 0,64,0 to spawn on (Forced on void worlds)
+set_bedrock_spawn_block: false
+
 # Default layer if world settings can't be found.
 default:
   - Bedrock
