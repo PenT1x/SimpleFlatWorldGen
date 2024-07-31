@@ -2,7 +2,7 @@
 A simple but customizable flat world generator for minecraft
 
 # Setup
-- Download the plugin [her](https://github.com/PenT1x/SimpleFlatWorldGen/releases/latest) and add it as normal
+- Download the plugin [here](https://github.com/PenT1x/SimpleFlatWorldGen/releases/latest) and add it as normal
 - Choose the plugin as the world generator by adding this to the bukkit.yml file
 ```yml
 worlds:
